@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="C++," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="基本内置类型C++ 定义了一套包括算数类型与空类型在内的基本数据类型 算数类型包括：  字符 整型数 布尔值 浮点数">
+<meta name="keywords" content="C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++ Primer第二章 变量与基本类型">
+<meta property="og:url" content="https://dercpp.github.io/2018/02/09/cpp-cppprimer-chapter2/index.html">
+<meta property="og:site_name" content="Study Log">
+<meta property="og:description" content="基本内置类型C++ 定义了一套包括算数类型与空类型在内的基本数据类型 算数类型包括：  字符 整型数 布尔值 浮点数">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-09T08:17:43.822Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C++ Primer第二章 变量与基本类型">
+<meta name="twitter:description" content="基本内置类型C++ 定义了一套包括算数类型与空类型在内的基本数据类型 算数类型包括：  字符 整型数 布尔值 浮点数">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://dercpp.github.io/2018/02/09/cpp-cppprimer-chapter2/"/>
+
+
+
+
+
+  <title>C++ Primer第二章 变量与基本类型 | Study Log</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Study Log</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/index" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/index" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dercpp.github.io/2018/02/09/cpp-cppprimer-chapter2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CPlus">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Study Log">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">C++ Primer第二章 变量与基本类型</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-09T14:01:27+08:00">
+                2018-02-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/cpp-study/" itemprop="url" rel="index">
+                    <span itemprop="name">C++学习之路</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/cpp-study/cpp-primer-notes/" itemprop="url" rel="index">
+                    <span itemprop="name">C++ Primer读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/02/09/cpp-cppprimer-chapter2/" class="leancloud_visitors" data-flag-title="C++ Primer第二章 变量与基本类型">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="基本内置类型"><a href="#基本内置类型" class="headerlink" title="基本内置类型"></a>基本内置类型</h2><p>C++ 定义了一套包括算数类型与空类型在内的基本数据类型</p>
+<p>算数类型包括：</p>
+<ul>
+<li>字符</li>
+<li>整型数</li>
+<li>布尔值</li>
+<li>浮点数</li>
+</ul>
+<a id="more"></a>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">含义</th>
+<th style="text-align:center">最小尺寸</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">bool</td>
+<td style="text-align:center">布尔类型</td>
+<td style="text-align:center">未定义</td>
+</tr>
+<tr>
+<td style="text-align:center">char</td>
+<td style="text-align:center">字符</td>
+<td style="text-align:center">8位</td>
+</tr>
+<tr>
+<td style="text-align:center">wchar_t</td>
+<td style="text-align:center">宽字符</td>
+<td style="text-align:center">16位</td>
+</tr>
+<tr>
+<td style="text-align:center">char16_t</td>
+<td style="text-align:center">Unicode字符</td>
+<td style="text-align:center">16位</td>
+</tr>
+<tr>
+<td style="text-align:center">char32_t</td>
+<td style="text-align:center">Unicode字符</td>
+<td style="text-align:center">32位</td>
+</tr>
+<tr>
+<td style="text-align:center">short</td>
+<td style="text-align:center">短整型</td>
+<td style="text-align:center">16位</td>
+</tr>
+<tr>
+<td style="text-align:center">int</td>
+<td style="text-align:center">整型</td>
+<td style="text-align:center">16位</td>
+</tr>
+<tr>
+<td style="text-align:center">long</td>
+<td style="text-align:center">长整型</td>
+<td style="text-align:center">32位</td>
+</tr>
+<tr>
+<td style="text-align:center">long long</td>
+<td style="text-align:center">长正型</td>
+<td style="text-align:center">64位</td>
+</tr>
+<tr>
+<td style="text-align:center">float</td>
+<td style="text-align:center">单精度浮点型</td>
+<td style="text-align:center">6位有效数字</td>
+</tr>
+<tr>
+<td style="text-align:center">double</td>
+<td style="text-align:center">双精度浮点型</td>
+<td style="text-align:center">10位有效数字</td>
+</tr>
+<tr>
+<td style="text-align:center">long double</td>
+<td style="text-align:center">扩展精度浮点型</td>
+<td style="text-align:center">10位有效数字</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>除去布尔型与扩展的字符型外，其他整型可以划分为带符号的（ <code>signed</code> ）和无符号的（ <code>unsigned</code> ） 默认都是带符号的<ul>
+<li>带符号的类型首位为符号为，无符号的所有位都用于存储值</li>
+</ul>
+</li>
+<li>把非布尔类型的值赋给布尔类型时，初始值为0则布尔类型结果为 <code>false</code>，否则为 <code>true</code></li>
+<li>浮点数赋值给整型时将作近似处理，舍弃小数部分</li>
+<li>给无符号类型的赋值若超出其表示范围，则其值为初始值对无符号类型表示数值总数取模后的余数</li>
+<li>给带符号类型的赋值超出其表示范围时，结果是未定义的</li>
+<li><p>若表达式里既有带符号类型又有无符号类型，当带符号类型取值为负时表达式结果会出现异常</p>
+</li>
+<li><p>字符与字符串字面值</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">前缀</th>
+<th style="text-align:center">含义</th>
+<th style="text-align:center">类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">u</td>
+<td style="text-align:center">Unicode 16字符</td>
+<td style="text-align:center">char16_t</td>
+</tr>
+<tr>
+<td style="text-align:center">U</td>
+<td style="text-align:center">Unicode 32字符</td>
+<td style="text-align:center">char32_t</td>
+</tr>
+<tr>
+<td style="text-align:center">L</td>
+<td style="text-align:center">宽字符</td>
+<td style="text-align:center">wchar_t</td>
+</tr>
+<tr>
+<td style="text-align:center">u8</td>
+<td style="text-align:center">UTF-8 （仅用于字符串字面常量）</td>
+<td style="text-align:center">char</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>整型字面值</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">后缀</th>
+<th style="text-align:center">最小匹配类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">u 或 U</td>
+<td style="text-align:center">unsigned</td>
+<td>char16_t</td>
+</tr>
+<tr>
+<td style="text-align:center">l 或 L</td>
+<td style="text-align:center">long</td>
+</tr>
+<tr>
+<td style="text-align:center">ll 或 LL</td>
+<td style="text-align:center">long long</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>浮点型字面值</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">后缀</th>
+<th style="text-align:center">类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">f 或 F</td>
+<td style="text-align:center">float</td>
+</tr>
+<tr>
+<td style="text-align:center">l 或 L</td>
+<td style="text-align:center">long double</td>
+</tr>
+</tbody>
+</table>
+<p>布尔型字面值： <code>false</code> / <code>true</code></p>
+<hr>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>变量组成形式：<br>    <code>类型说明符 变量名;</code></p>
+<ul>
+<li>可以在定义变量时直接为变量赋值</li>
+</ul>
+<p>初始化形式：</p>
+<ul>
+<li><code>int units = 0;</code></li>
+<li><code>int units = {0};</code></li>
+<li><code>int units{0};</code></li>
+<li><code>int units(0);</code></li>
+<li>使用花括号 <code>{}</code>的初始化形式为列表初始化，此时不能用表示范围大的类型初始化表示范围小的类型，编译器会报错</li>
+<li>任何定义在函数体外的变量若无初始化，则将被默认初始化为0</li>
+<li>定义在函数体内部的内置类型变量将不被初始化</li>
+<li>类对象的默认初始化由类决定</li>
+</ul>
+<p>变量声明使得变量名为程序所知，而定义负责创建与名字关联的实体</p>
+<p>仅声明变量而不定义：</p>
+<ul>
+<li><code>extern int i;</code></li>
+</ul>
+<p>声明并定义：</p>
+<ul>
+<li><code>int j;</code></li>
+</ul>
+<p>注：</p>
+<ul>
+<li>C++ 是一种静态类型语言，在编译阶段检查类型</li>
+</ul>
+<p>同一个名字在不同作用域中可能指向不同实体。名字的有效区域始于名字的声明语句，终于语句所在作用域末端。</p>
+<p>嵌套作用域：<br>默认先使用最近作用域的同名变量  例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">int reused = 42;    //reused拥有全局作用域</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int unique = 0; //unique拥有块作用域</span><br><span class="line">    //输出#1： 使用全局变量reused；输出42 0</span><br><span class="line">    std::cout &lt;&lt; reused &lt;&lt; &quot; &quot; &lt;&lt; unique &lt;&lt;std::endl;</span><br><span class="line">    int reused = 0; //新建局部变量reused，覆盖了全局变量reused</span><br><span class="line">    //输出#2： 使用局部变量reused；输出0 0</span><br><span class="line">    std::cout &lt;&lt; reused &lt;&lt; &quot; &quot; &lt;&lt; unique &lt;&lt;std::endl;</span><br><span class="line">    //显式访问全局变量reused；输出42 0</span><br><span class="line">    std::cout &lt;&lt; ::reused &lt;&lt; &quot; &quot; &lt;&lt; unique &lt;&lt;std::endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="复合类型"><a href="#复合类型" class="headerlink" title="复合类型"></a>复合类型</h2><ul>
+<li><p>引用 - 为对象起别名，定义形式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int ival = 123;</span><br><span class="line">int &amp;rval = ival;   //引用必须被初始化，且初始值必须是一个对象</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>指针 - 指向另一种类型的复合类型</p>
+<ul>
+<li>指针也实现了对其他对象的间接访问</li>
+<li>指针本身即是对象，允许对其赋值、拷贝</li>
+<li>指针生命周期内可以先后指向几个不同的对象</li>
+<li>不是必须在定义时赋初始</li>
+<li><p>定义形式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int val = 123;</span><br><span class="line">int *p = &amp;val;</span><br><span class="line">int **pp = &amp;p;</span><br><span class="line">int* i = p, j = 0;  //当使用int* i，j;的定义方式时，只有i是指针类型</span><br><span class="line"></span><br><span class="line">// pp为指向int整型的指针，pp为指向（指向int整型的指针）的指针</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>指针值（即地址）应属下列四种状态之一：</p>
+<ul>
+<li>指向一个对象</li>
+<li>指向紧邻对象所占空间的下一个位置</li>
+<li>空指针，建议使用 <code>nullptr</code> 来初始化指针得到空指针，尽量避免用 <code>NULL</code></li>
+<li>无效指针（上述情况之外的其他值）</li>
+</ul>
+</li>
+<li><p>利用指针访问对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int val = 42;</span><br><span class="line">int *p = &amp;val;</span><br><span class="line">cout &lt;&lt; *p;</span><br><span class="line"></span><br><span class="line">//操作符 * 为解引用符，可以得到指针所指对象</span><br><span class="line"></span><br><span class="line">*p = 0; //若给解引用的结果赋值，也就是给指针所指对象赋值</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>void*</code> 指针是一种特殊类型的指针，可以存放任意对象的地址</p>
+<ul>
+<li><code>void*</code> 指针作用有限，一般用于与别的指针作比较或作为函数的输入、输出，或给另外一个 <code>void*</code> 指针赋值</li>
+<li>因为不知道 <code>void*</code> 指针所指对象的具体类型，故不能直接操作其所指对象</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="const-限定符"><a href="#const-限定符" class="headerlink" title="const 限定符"></a>const 限定符</h2>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/cpp/" rel="tag"># C++</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/08/leetcode-q771/" rel="next" title="LeetCode 771 Jewels and Stones">
+                <i class="fa fa-chevron-left"></i> LeetCode 771 Jewels and Stones
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/09/database-introduction-to-database-system-chapter1/" rel="prev" title="数据库系统概论第一章 初识数据库">
+                数据库系统概论第一章 初识数据库 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">CPlus</p>
+              <p class="site-description motion-element" itemprop="description">Expect the unexpected</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本内置类型"><span class="nav-number">1.</span> <span class="nav-text">基本内置类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">2.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复合类型"><span class="nav-number">3.</span> <span class="nav-text">复合类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#const-限定符"><span class="nav-number">4.</span> <span class="nav-text">const 限定符</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CPlus</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("MmVUAMogU7mwMEIV8sMO8qS8-gzGzoHsz", "6cnYYefdkx0IYBFDqtIBGeFA");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
