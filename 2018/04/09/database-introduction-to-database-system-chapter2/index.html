@@ -83,18 +83,18 @@
 
 
 
-<meta name="description" content="Expect the unexpected">
+<meta name="description" content="信息世界中的基本概念 实体Entity：客观存在且可互相区别的事务 属性Attribute：实体所具有的某一特性 码Key：唯一标识实体的属性集 实体型Entity Type：用实体名及其属性集合来抽象与刻画同类实体 实体集Entity Set：同一类型实体的集合 联系Relationship： 实体型内部的联系：组成实体各属性之间的联系 实体型之间的联系：不同的实体集间的联系 一对一 一对多 多">
 <meta name="keywords" content="数据库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据库系统概论第二章 数据模型">
 <meta property="og:url" content="https://dercpp.github.io/2018/04/09/database-introduction-to-database-system-chapter2/index.html">
 <meta property="og:site_name" content="Study Log">
-<meta property="og:description" content="Expect the unexpected">
+<meta property="og:description" content="信息世界中的基本概念 实体Entity：客观存在且可互相区别的事务 属性Attribute：实体所具有的某一特性 码Key：唯一标识实体的属性集 实体型Entity Type：用实体名及其属性集合来抽象与刻画同类实体 实体集Entity Set：同一类型实体的集合 联系Relationship： 实体型内部的联系：组成实体各属性之间的联系 实体型之间的联系：不同的实体集间的联系 一对一 一对多 多">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-09T09:04:47.053Z">
+<meta property="og:updated_time" content="2018-04-10T06:12:17.646Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库系统概论第二章 数据模型">
-<meta name="twitter:description" content="Expect the unexpected">
+<meta name="twitter:description" content="信息世界中的基本概念 实体Entity：客观存在且可互相区别的事务 属性Attribute：实体所具有的某一特性 码Key：唯一标识实体的属性集 实体型Entity Type：用实体名及其属性集合来抽象与刻画同类实体 实体集Entity Set：同一类型实体的集合 联系Relationship： 实体型内部的联系：组成实体各属性之间的联系 实体型之间的联系：不同的实体集间的联系 一对一 一对多 多">
 
 
 
@@ -383,7 +383,162 @@
       
 
       
-        
+        <h2 id="信息世界中的基本概念"><a href="#信息世界中的基本概念" class="headerlink" title="信息世界中的基本概念"></a>信息世界中的基本概念</h2><ul>
+<li>实体Entity：客观存在且可互相区别的事务</li>
+<li>属性Attribute：实体所具有的某一特性</li>
+<li>码Key：唯一标识实体的属性集</li>
+<li>实体型Entity Type：用实体名及其属性集合来抽象与刻画同类实体</li>
+<li>实体集Entity Set：同一类型实体的集合</li>
+<li>联系Relationship：<ul>
+<li>实体型内部的联系：组成实体各属性之间的联系</li>
+<li>实体型之间的联系：不同的实体集间的联系<ul>
+<li>一对一</li>
+<li>一对多</li>
+<li>多对多</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>注： 概念模型的一种表示方法：实体-联系方法（ER图）</li>
+</ul>
+<a id="more"></a>
+<h2 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>数据模型是对现实世界数据特征的抽象，要求满足三方面要求：</p>
+<ul>
+<li>能比较真实地模拟现实世界</li>
+<li>容易为人所理解</li>
+<li>便于在计算机上实现</li>
+</ul>
+<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><h4 id="概念模型（信息模型）"><a href="#概念模型（信息模型）" class="headerlink" title="概念模型（信息模型）"></a>概念模型（信息模型）</h4><p>定义： 按用户的观点来对数据与信息建模，用与数据库设计</p>
+<h4 id="逻辑模型与物理模型"><a href="#逻辑模型与物理模型" class="headerlink" title="逻辑模型与物理模型"></a>逻辑模型与物理模型</h4><ul>
+<li>逻辑模型主要包括：网状模型、层次模型、关系模型、面向对象数据模型、对象关系数据模型、半结构化数据模型等，按计算机系统的观点对数据建模，用于DBMS实现</li>
+<li>物理模型是对数据最底层的抽象，描述数据在系统内（磁盘上）的表示方法与存取方法</li>
+</ul>
+<h3 id="组成要素"><a href="#组成要素" class="headerlink" title="组成要素"></a>组成要素</h3><p>数据模型是严格定义的一组概念的集合，由三部分组成：</p>
+<ul>
+<li>数据结构：描述系统静态特性，描述数据库的自称对象以及对象之间的联系</li>
+<li>数据操作：描述系统动态特性，对数据库中各对象的实力允许执行的操作的集合，包括操作及有关的规则<ul>
+<li>类型： 查询、更新（插入、删除、修改）</li>
+<li>语言:<ul>
+<li>定义数据操作的确切含义、符号、优先级别</li>
+<li>实现数据操作的语言: 查询语言、更新语言</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>完整性约束条件：<ul>
+<li>一组完整性规则的集合<ul>
+<li>完整性规则：给定数据模型中数据及其联系所具有的制约与依存规则</li>
+<li>用以限定符合数据模型的数据库状态以及状态的变化，以保证数据的正确性、有效性与相容性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>数据模型对完整性约束条件的定义：<ul>
+<li>反应与规定必须遵守的基本的通用的完整性约束条件</li>
+<li>提供定义完整性约束条件的机制，以反应具体应用所涉及的数据必须遵守的特定语义约束条件</li>
+</ul>
+</li>
+</ul>
+<h3 id="常用数据模型"><a href="#常用数据模型" class="headerlink" title="常用数据模型"></a>常用数据模型</h3><h4 id="格式化模型"><a href="#格式化模型" class="headerlink" title="格式化模型"></a>格式化模型</h4><ul>
+<li>注： 格式化模型中数据结构的单位：基本层次联系</li>
+</ul>
+<h5 id="层次模型"><a href="#层次模型" class="headerlink" title="层次模型"></a>层次模型</h5><p>用树形结构表示各类尸体以及实体间联系</p>
+<ul>
+<li>定义： 满足下面两个条件的基本层次模型的集合为层次模型<ul>
+<li>有且只有一个节点没有双亲结点（根节点）</li>
+<li>根以外的其他结点有且只有一个双亲结点</li>
+</ul>
+</li>
+<li>特点：<ul>
+<li>只能处理一对多的实体联系</li>
+<li>任何记录只只有按其路径查看</li>
+<li>没有一个子女记录值能脱离双亲记录值而独立存在</li>
+</ul>
+</li>
+<li>完整性约束机制：<ul>
+<li>无相应的双亲结点无法插入子女结点的值</li>
+<li>若删除双亲结点的值，则子女的结点值也被同时删除</li>
+<li>更新操作时，更新所有相应记录，保证数据一致性</li>
+</ul>
+</li>
+<li>优点：<ul>
+<li>数据结构简单清晰</li>
+<li>查询效率高</li>
+<li>提供了良好的完整性支持</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>结点间多对多联系表示不自然</li>
+<li>对插入、删除限制多，应用编写复杂</li>
+<li>查询子女结点必须经过双亲结点</li>
+<li>层次数据库的命令趋于程序化</li>
+</ul>
+</li>
+</ul>
+<h5 id="网状模型"><a href="#网状模型" class="headerlink" title="网状模型"></a>网状模型</h5><p>用网状结构表示各类实体以及实体间的联系</p>
+<ul>
+<li>定义：<ul>
+<li>满足下列两个条件的基本层次联系的集合：</li>
+<li>允许一个以上的结点没有双亲</li>
+<li>一个结点可以有多余一个的双亲</li>
+</ul>
+</li>
+<li>特点：<ul>
+<li>允许两个结点之间有多种联系</li>
+<li>要为每个联系命名，并指出与该联系有关的双亲记录与子女记录</li>
+<li>网状模型间接表示多对多联系：将多对多联系分解成一对多联系</li>
+<li>导航式查询语言与增删改操作语言</li>
+<li>完整性约束条件不严格</li>
+<li>支持码的概念：唯一标识记录的数据项的集合，取唯一的值保证一个联系中双亲记录与子女记录之间是一对多联系</li>
+<li>可以定义双亲记录与子女记录之间的某些约束条件</li>
+</ul>
+</li>
+<li>优点：<ul>
+<li>更直观地描述现实世界</li>
+<li>具有良好性能，存取效率较高</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>结构复杂</li>
+<li>DDL、DML语言复杂，用户不容易使用</li>
+<li>记录间联系时通过存取路径实现，应用程序必须选择存取路径，加重了程序员地负担</li>
+</ul>
+</li>
+</ul>
+<h4 id="关系模型"><a href="#关系模型" class="headerlink" title="关系模型"></a>关系模型</h4><p>用户观点下，关系模型中数据的逻辑结构就是一张二维表</p>
+<ul>
+<li>关系：一个关系通常对应一张表</li>
+<li>元组：表中一行</li>
+<li>属性：表中一列</li>
+<li>主码：表中某个属性组，可以唯一确定一个元组</li>
+<li>域：一组具有相同数据类型的值的集合，属性的取值范围来自某个域</li>
+<li>分量：元组中的一个属性值</li>
+<li>关系模式：对关系的描述</li>
+<li>关系必须是规范化的，满足一定的规范条件：关系的没一个分量必须是一个不可分的数据项</li>
+<li>数据操作是集合操作，操作的对象与操作结果都是关系，存取路径对用户隐蔽（提高数据独立性）</li>
+<li>关系的完整性约束条件：实体完整性，参照完整性，用户定义的完整性</li>
+<li>优点：<ul>
+<li>建立在严格的数学概念的基础上</li>
+<li>概念单一：<ul>
+<li>实体与各类联系都用关系来表示</li>
+<li>对数据的检索结果也是关系</li>
+</ul>
+</li>
+<li>存取路径对用户透明：<ul>
+<li>具有更高的数据独立性，更好的保密性</li>
+<li>简化了程序员的工作与数据库建立开发的工作</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>查询效率较低</li>
+<li>为了提高性能，必须</li>
+<li>对用户的查询请求进行优化，增加了开发数据库管理系统的难度</li>
+</ul>
+</li>
+</ul>
+<h4 id="对象模型"><a href="#对象模型" class="headerlink" title="对象模型"></a>对象模型</h4><h5 id="面向对象数据模型"><a href="#面向对象数据模型" class="headerlink" title="面向对象数据模型"></a>面向对象数据模型</h5><h5 id="对象关系数据模型"><a href="#对象关系数据模型" class="headerlink" title="对象关系数据模型"></a>对象关系数据模型</h5><h4 id="半结构化数据模型"><a href="#半结构化数据模型" class="headerlink" title="半结构化数据模型"></a>半结构化数据模型</h4><h4 id="非结构化数据模型"><a href="#非结构化数据模型" class="headerlink" title="非结构化数据模型"></a>非结构化数据模型</h4><h4 id="图模型"><a href="#图模型" class="headerlink" title="图模型"></a>图模型</h4>
       
     </div>
     
@@ -473,8 +628,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -534,6 +698,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#信息世界中的基本概念"><span class="nav-number">1.</span> <span class="nav-text">信息世界中的基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据模型"><span class="nav-number">2.</span> <span class="nav-text">数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">2.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分类"><span class="nav-number">2.2.</span> <span class="nav-text">分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念模型（信息模型）"><span class="nav-number">2.2.1.</span> <span class="nav-text">概念模型（信息模型）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑模型与物理模型"><span class="nav-number">2.2.2.</span> <span class="nav-text">逻辑模型与物理模型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组成要素"><span class="nav-number">2.3.</span> <span class="nav-text">组成要素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用数据模型"><span class="nav-number">2.4.</span> <span class="nav-text">常用数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#格式化模型"><span class="nav-number">2.4.1.</span> <span class="nav-text">格式化模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#层次模型"><span class="nav-number">2.4.1.1.</span> <span class="nav-text">层次模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#网状模型"><span class="nav-number">2.4.1.2.</span> <span class="nav-text">网状模型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关系模型"><span class="nav-number">2.4.2.</span> <span class="nav-text">关系模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对象模型"><span class="nav-number">2.4.3.</span> <span class="nav-text">对象模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#面向对象数据模型"><span class="nav-number">2.4.3.1.</span> <span class="nav-text">面向对象数据模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对象关系数据模型"><span class="nav-number">2.4.3.2.</span> <span class="nav-text">对象关系数据模型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#半结构化数据模型"><span class="nav-number">2.4.4.</span> <span class="nav-text">半结构化数据模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非结构化数据模型"><span class="nav-number">2.4.5.</span> <span class="nav-text">非结构化数据模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图模型"><span class="nav-number">2.4.6.</span> <span class="nav-text">图模型</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
